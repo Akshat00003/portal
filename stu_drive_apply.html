@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        h4{
+            padding-left: 15px;
+            padding-right: 25px;
+            background-color: yellow;
+            width: max-content;
+            height: 49px;
+            border-radius: 10px;
+            color: black;
+            margin-top: 20px;
+            margin-left: 25px;
+            font-size: xx-large;
+        }
+        #box2{
+            width: 550px;
+        }
+        .content{
+            display: flex;
+            justify-content: center;
+        }
+        #header{
+            display: flex;
+            justify-content: space-between;
+        }
+        h3{
+            margin-top: 50px;
+            margin-left: 40px;
+            font-size: x-large;
+            padding-right: 10px;
+        }
+        #nav{
+            height: 62px;
+        }
+        h5{
+            margin-left: 40px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div id="canvas">
+            <div id="nav">
+                <h1>Placement Portal </h1>
+            </div>
+            <div id="navbar">
+            </div>
+            <div class="content">
+                <div id="box2">
+                    <div id="header">
+                        <h4> {{this_drive.drive_name}} </h4>
+                        <a href="/view_company/{{this_company.company_id}}/{{user_id}}"  class="btn btn-secondary" style="margin-right: 60px; color: white; margin-top: 25px; padding-top: 10px;"> Go Back </a>
+                    </div>
+                    <div id="drives">
+                        <h3> Job Title : {{this_drive.job_title}}</h3>
+                        <h3> Job Description :  {{this_drive.job_description}}</h3>
+                        <h3> Salary : {{this_drive.salary}}</h3>
+                        <h3> Min CGPA : {{this_drive.min_cgpa}}</h3>
+                        <a href="/stu_application/{{this_drive.id}}/{{this_company.company_id}}/{{user_id}}"  class="btn btn-primary" style="margin-left: 160px; color: white; margin-top: 70px; padding-left: 80px; padding-right: 80px; padding-top: 10px; padding-bottom: 10px;"> Apply </a>
+                    </div>
+
+                        
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="foot">
+        <div id="copyright"> <br>
+            @ 2026 Placement Portal | All Rights Reserverd
+        </div>
+    </footer>
+
+</nav>
+</body>
+</html>

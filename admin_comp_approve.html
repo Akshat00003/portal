@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Application</title>
+    <link rel="stylesheet" href="../static/dashboard.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        h4{
+            padding-left: 15px;
+            padding-top: 7px;
+            background-color: yellow;
+            width: 270px;
+            height: 49px;
+            border-radius: 10px;
+            color: black;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div id="canvas">
+            <div id="nav">
+                <h1>Placement Portal </h1>
+            </div>
+            <div id="navbar">
+                <h5> Welcome Admin </h5>
+                
+            </div>
+            <div class="content">
+                <div id="box1">
+                    <div id="tags">
+                        <a href="/admin_dashboard"class="btn btn-warning" > DASHBOARD </a>
+                        <a href="/admin_comp_approve" class="btn btn-warning"> COMPANY APPLICATION </a>
+                        <a href="/admin_stud_approve" class="btn btn-warning"> STUDENT APPLICATION </a>
+                        <a href="/admin_on_drive" class="btn btn-warning" > ONGOING DRIVES </a>
+                        <a href="/" class="btn btn-danger" > LOGOUT </a>
+                    </div> 
+
+                </div>
+                    <div id="box2">
+                        <div id="table1">
+                            <h4 style="margin-left: 6px;"> Company Application : </h4>
+                            <table class="table text-center border" style="color: white; margin-left: 6px; width: 1478px;" >
+                            <thead>
+                            <tr>
+                                <th> ID </th>
+                                <th> Company Name</th>
+                                <th> HR Name </th>
+                                <th> HR Contact </th>
+                                <th> Action </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {% for company in all_company %}
+                            <tr>
+                                <th> {{company.id}}</th>
+                                <td> {{company.company_name}} </td>
+                                <td> {{company.user.f_name}} {{company.user.l_name}}</td>
+                                <td> {{company.hr_contact}}</td>
+                                <td> 
+                                    <a href="/approve_company/{{company.id}}" class="approve-btn" > Approve </a>
+                                    <a href="/reject_company/{{company.id}}" class="reject-btn" > Reject </a>
+                                </td>
+                            </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        </div>  
+                    </div>
+            </div>
+        </div>
+    </div>
+    <footer id="foot">
+        <div id="copyright"> <br>
+            @ 2026 Placement Portal | All Rights Reserverd
+        </div>
+    </footer>
+
+</nav>
+</body>
+</html>

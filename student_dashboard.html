@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard </title>
+    <link rel="stylesheet" href="../static/dashboard.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        h4{
+            padding-left: 10px;
+            padding-top: 7px;
+            background-color: yellow;
+            width: 230px;
+            height: 49px;
+            border-radius: 10px;
+            color: black;
+            margin-top: 20px;
+        }
+        #box2{
+            display: flex;
+            justify-content: space-between;
+        }
+        #table2{
+            margin-right: 6px;
+        }
+         #company_profile {
+            margin-top: 15px;
+            margin-left: 26px;
+            width: 500px;
+            height: 300px;
+            border-radius: 12px;
+            padding: 18px;
+            background-color: #112240;
+            color: white;
+            border: 2px solid #f5b041;
+
+        }
+
+        .status {
+            padding: 5px 12px;
+            border-radius: 12px;
+            color: black;
+            font-size: 14px;
+            margin-left: 15px;
+        }
+
+        .approved {
+            background-color: green;
+            color: white;
+        }
+
+        .reject {
+            background-color: red;
+        }
+
+        .pending {
+            background-color: #f39c12;
+        }
+
+        h5 {
+            margin-top: 15px;
+
+
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div id="canvas">
+            <div id="nav">
+                <h1>Placement Portal </h1>
+            </div>
+            <div id="navbar">
+                <h5> Welcome {{this_user.f_name}} {{this_user.l_name}}</h5>
+            </div>
+            <div class="content">
+                <div id="box1">
+                    <div id="tags">
+                        <a href="/student_dashboard/{{this_user.id}}"class="btn btn-warning" > DASHBOARD</a>
+                        <a href="/edit_stu_profile/{{this_user.id}}" class="btn btn-warning"> COMPLETE PROFILE </a>
+                        <a href="/student_application_history/{{this_user.id}}" class="btn btn-warning"> HISTORY </a>
+                        <a href="/" class="btn btn-danger" > LOGOUT </a>
+                    </div> 
+
+                </div>
+                <div id="company_profile">
+                <div class="company_box">
+                    <h4 style="margin-top: 10px;"> Student Details : </h4>
+                    <h5> Student Name : {{this_user.f_name}} {{this_user.l_name}} </h5>
+                    <h5> Student Email : {{this_user.email}} </h5>
+                    <h5> Contact :  {{this_user.contact}}</h5>
+                    <h5> Profile Status :<span class="status
+                        {% if this_user.profile_status == 'Pending'%} pending
+                        {% elif this_user.profile_status == 'Completed'%} approved
+                        {% endif %}">
+                            {{this_user.profile_status}} </span></h5>
+                    </h5>
+            
+                </div>
+            </div>
+                    <div id="box2">
+                        <div id="table1">
+                            <h4 style="padding-left: 30px; margin-left: 16px;"> Organizations: </h4>
+                            <table class="table text-center border" style="color: white; margin-left: 16px; width: 600px;" >
+                            <thead>
+                                
+                            <tr>
+                                <th> ID</th>
+                                <th> Company Name</th>
+                                <th> Action </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for company in all_company%}
+                            {% if company.drive: %}
+                            <tr>
+                                <th> {{company.company_id}}</th>
+                                <td>{{company.company_name}} </td>
+                                <td> 
+                                    <a href="/view_company/{{company.company_id}}/{{this_user.id}}" class="btn btn-primary mx-2" > View Details </a>
+                                </td>
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        </div>          
+                        <div id="table2">
+                            <h4 style="padding-left: 30px; margin-right: 240px;">Applied Drives: </h4>
+                               <table class="table text-center border" style="color: white; margin-right: 240px;" >
+                            <thead>
+                            <tr>
+                                <th> ID</th>
+                                <th> Drive Name</th>
+                                <th> Company </th>
+                                <th> Date </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for application in all_application%}
+                            {% if application.student_id == this_user.id%}
+                            <tr>
+                                <th> {{application.application_id}}</th>
+                                <td> {{application.drive.drive_name}}</td>
+                                <td> {{application.company.company_name}} </td>
+                                <td> {{application.application_date}}</td>
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <footer id="foot">
+        <div id="copyright"> <br>
+            @ 2026 Placement Portal | All Rights Reserverd
+        </div>
+    </footer>
+
+</nav>
+</body>
+</html>

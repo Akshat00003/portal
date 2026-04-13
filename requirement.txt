@@ -1,0 +1,17 @@
+All Libraries:
+
+
+BACKEND LIBRARIES:
+1. Flask -- I used Flask as the backend framework to handle routing and server logic.
+
+2. SQLAlchemy --  SQLAlchemy is used for database management and ORM-based interaction.
+
+3. Jinja2 -- Jinja2 is used for dynamic rendering of data in HTML templates.
+
+4. OS --  OS module is used for handling file storage paths for resume uploads.
+
+5 . datetime -- datetime module is used to store application and placement dates.
+
+FRONTEND LIBRARIES:
+
+1 . Bootstrap -- Bootstrap is used for responsive and clean UI design.
